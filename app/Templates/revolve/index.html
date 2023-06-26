@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Maktab 89- Group 2 blog</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- theme meta -->
+	<meta name="theme-name" content="revolve" />
+
+	<!--Favicon-->
+	<link rel="shortcut icon" href="../../static/images/favicon.ico" type="image/x-icon">
+
+	<!-- THEME CSS
+	================================================== -->
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="../../static/plugins/bootstrap/css/bootstrap.min.css">
+	<!-- Themify -->
+	<link rel="stylesheet" href="../../static/plugins/themify/css/themify-icons.css">
+	<link rel="stylesheet" href="../../static/plugins/slick-carousel/slick-theme.css">
+	<link rel="stylesheet" href="../../static/plugins/slick-carousel/slick.css">
+	<!-- Slick Carousel -->
+	<link rel="stylesheet" href="../../static/plugins/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="../../static/plugins/owl-carousel/owl.theme.default.min.css">
+	<link rel="stylesheet" href="../../static/plugins/magnific-popup/magnific-popup.css">
+	<!-- manin stylesheet -->
+	<link rel="stylesheet" href="../../static/css/style.css">
+</head>
+
+<body>
+
+	<header class="header-top bg-grey justify-content-center">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-2 col-md-4 text-center d-none d-lg-block">
+					<a class="navbar-brand " href="/">
+						Maktab89
+					</a>
+				</div>
+
+				<div class="col-lg-8 col-md-12">
+					<nav class="navbar navbar-expand-lg navigation-2 navigation">
+						<a class="navbar-brand text-uppercase d-lg-none" href="#">
+							<img src="../../static/images/logo.png" alt="" class="img-fluid">
+						</a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
+							aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="ti-menu"></span>
+						</button>
+
+						<div class="collapse navbar-collapse" id="navbar-collapse">
+							<ul id="menu" class="menu navbar-nav mx-auto">
+                                <li class="nav-item">
+									<a class="nav-link" href="/">Home</a>
+								  </li>
+								<li class="nav-item">
+									<a class="nav-link" href="/about-us">About</a>
+								  </li>
+								  <li class="nav-item">
+									<a class="nav-link" href="/contact-us">Contact</a>
+								  </li>
+								  <li class="nav-item">
+									<a class="nav-link" href="/allposts/">All posts</a>
+								  </li>
+								  {%if usertype == "not_logged_in"%}
+								  <li class="nav-item">
+									<a class="nav-link" href="/login">Register/Login</a>
+								  </li>
+								  {%endif%}
+								  {%if usertype == "admin" or usertype == "superuser"%}
+								  <li class="nav-item">
+									<a class="nav-link" href="{{usertype}}/dashboard">Dashboard</a>
+								  </li>
+								  {%endif%}
+								  {%if usertype != "not_logged_in"%}
+								  <li class="nav-item">
+									<a class="nav-link" href="/logout">Logout</a>
+								  </li>
+								  {%endif%}
+								
+
+								</ul>
+						</div>
+					</nav>
+				</div>
+
+				<div class="col-lg-2 col-md-4 col-6">
+					<div class="header-socials-2 text-right d-none d-lg-block">
+						<ul class="list-inline mb-0">
+							<li class="list-inline-item"><a href="https://facebook.com"><i class="ti-facebook"></i></a></li>
+							<li class="list-inline-item"><a href="https://twitter.com"><i class="ti-twitter"></i></a></li>
+							<li class="list-inline-item"><a href="https://linkedin.com"><i class="ti-linkedin"></i></a></li>
+							<li class="list-inline-item"><a href="https://pinterest.com"><i class="ti-pinterest"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<section class="slider mt-4">
+		<div class="container-fluid">
+			<div class="row no-gutters">
+				<div class="col-lg-12 col-sm-12 col-md-12 slider-wrap">
+
+					{%for post in most_visited_posts%}
+					<div class="slider-item">
+						<div class="slider-item-content">
+							<div class="post-thumb mb-4">
+								<a href="/post/{{post.id}}">
+									<img src="{{post.image}}" alt="" class="img-fluid">
+								</a>
+							</div>
+
+							<div class="slider-post-content">
+								<span class="cat-name text-color font-sm font-extra text-uppercase letter-spacing"></span>
+								<h3 class="post-title mt-1"><a href="blog-single.html">{{post.title}}</a></h3>
+								<span class=" text-muted  text-capitalize">{{post.create_date}}</span>
+							</div>
+						</div>
+					</div>
+					{%endfor%}
+
+
+
+					
+				</div>
+			</div>
+		</div>
+	</section>
+<section>
+	<div style="text-align: center;">
+		<hr>
+        <h2>
+			Recent posts
+		</h2>
+
+	</div>
+</section>
+	<section class="section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="row">
+					    {% for post in posts %}
+						<div class="col-lg-3 col-md-6">
+							<article class="post-grid mb-5">
+								<a class="post-thumb mb-4 d-block" href="/post/{{post.id}}">
+									<img src="{{post.image}}" alt="" class="img-fluid w-100">
+								</a>
+								<span class="cat-name text-color font-extra text-sm text-uppercase letter-spacing-1">{{post.owner.username}}</span>
+								<h3 class="post-title mt-1"><a href="/post/{{post.id}}">{{post.title}}</a></h3>
+
+								<span class="text-muted letter-spacing text-uppercase font-sm">{{post.create_date}}</span>
+
+							</article>
+						</div>
+						{% endfor %}
+
+					</div>
+				</div>
+
+				
+			</div>
+		</div>
+	</section>
+
+	<section class="footer-2 section-padding gray-bg pb-5">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6">
+					<div class="subscribe-footer text-center">
+						<div class="form-group mb-0">
+							<h2 class="mb-3">Subscribe Newsletter</h2>
+							<p class="mb-4">Subscribe my Newsletter for new blog posts , tips and info.
+							<p>
+							<div class="form-group form-row align-items-center mb-0">
+								<div class="col-sm-9">
+									<input type="email" class="form-control" placeholder="Email Address">
+								</div>
+								<div class="col-sm-3">
+									<a class="btn btn-dark text-white" onclick="alert('Coming soon!!!')">Subscribe</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer-btm mt-5 pt-4 border-top">
+				<div class="row">
+					<div class="col-lg-12">
+						<ul class="list-inline footer-socials-2 text-center">
+                            <li class="list-inline-item">
+									<a href="/">Home</a>
+                            </li>
+                            <li class="list-inline-item">
+									<a href="/about-us">About</a>
+							</li>
+							<li class="list-inline-item">
+									<a href="/contact-us">Contact</a>
+							</li>
+							<li class="list-inline-item">
+									<a href="/allposts/">All posts</a>
+							</li>
+								  {%if usertype == "not_logged_in"%}
+							<li class="list-inline-item">
+									<a href="/login">Register/Login</a>
+							</li>
+								  {%endif%}
+								  {%if usertype == "admin" or usertype == "superuser"%}
+							<li class="list-inline-item">
+									<a href="{{usertype}}/dashboard">Dashboard</a>
+							</li>
+								  {%endif%}
+								  {%if usertype != "not_logged_in"%}
+							<li class="list-inline-item">
+									<a href="/logout">Logout</a>
+							</li>
+								  {%endif%}
+						</ul>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-lg-6">
+						<div class="copyright text-center ">
+							@ copyright all reserved to <a href="https://themefisher.com/">themefisher.com</a>-2019 Distribution <a
+								href="https://themewagon.com">ThemeWagon.</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- THEME JAVASCRIPT FILES
+================================================== -->
+	<!-- initialize jQuery Library -->
+	<script src="../../static/plugins/jquery/jquery.js"></script>
+	<!-- Bootstrap jQuery -->
+	<script src="../../static/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../static/plugins/bootstrap/js/popper.min.js"></script>
+	<!-- Owl caeousel -->
+	<script src="../../static/plugins/owl-carousel/owl.carousel.min.js"></script>
+	<script src="../../static/plugins/slick-carousel/slick.min.js"></script>
+	<script src="../../static/plugins/magnific-popup/magnific-popup.js"></script>
+	<!-- Instagram Feed Js -->
+	<script src="../../static/plugins/instafeed-js/instafeed.min.js"></script>
+	<!-- Google Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+	<script src="../../static/plugins/google-map/gmap.js"></script>
+	<!-- main js -->
+	<script src="../../static/js/custom.js"></script>
+
+
+</body>
+
+</html>

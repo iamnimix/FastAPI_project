@@ -1,0 +1,362 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#  <head>#}
+{#    <meta charset="UTF-8" />#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0" />#}
+{#    <title>Group2Maktab89 - Admin dashboard</title>#}
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">#}
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>#}
+{##}
+{#<style>#}
+{#@media (min-width: 1025px) {#}
+{#.h-custom-2 {#}
+{#height: 100%;#}
+{#}#}
+{##}
+{#form {#}
+{#    /* Added */#}
+{#        float: none; /* Added */#}
+{#    /* Added */#}
+{#    margin: 20px auto 10px;#}
+{#}#}
+{#.card {#}
+{#    /* Added */#}
+{#        float: none; /* Added */#}
+{#    /* Added */#}
+{#    margin: 0 auto 10px;#}
+{#}#}
+{#}#}
+{##}
+{#</style>#}
+{##}
+{#</head>#}
+{##}
+{##}
+{#<body style="color: black;background-color: white;">#}
+{#<nav class="navbar navbar-expand-lg navbar-dark bg-dark">#}
+{#  <div class="container">#}
+{#    <a class="navbar-brand" href="/">Group2Maktab89</a>#}
+{#    <button#}
+{#      class="navbar-toggler"#}
+{#      type="button"#}
+{#      data-toggle="collapse"#}
+{#      data-target="#navbarNav"#}
+{#      aria-controls="navbarNav"#}
+{#      aria-expanded="false"#}
+{#      aria-label="Toggle navigation"#}
+{#    >#}
+{#      <span class="navbar-toggler-icon"></span>#}
+{#    </button>#}
+{#    <div class="collapse navbar-collapse" id="navbarNav">#}
+{#      <ul class="navbar-nav ml-auto">#}
+{#        <li class="nav-item">#}
+{#          <a class="nav-link" href="/">Home</a>#}
+{#        </li>#}
+{#        <li class="nav-item">#}
+{#          <a class="nav-link" href="/about-us">About</a>#}
+{#        </li>#}
+{#        <li class="nav-item">#}
+{#          <a class="nav-link" href="/contact-us">Contact</a>#}
+{#        </li>#}
+{#        <li class="nav-item">#}
+{#          <a class="nav-link" href="/allposts/">All posts</a>#}
+{#        </li>#}
+{#        {%if usertype == "not_logged_in"%}#}
+{#        <li class="nav-item">#}
+{#          <a class="nav-link" href="/login">Register/Login</a>#}
+{#        </li>#}
+{#        {%endif%}#}
+{#        {%if usertype == "admin" or usertype == "superuser"%}#}
+{#        <li class="nav-item">#}
+{#          <a class="nav-link" href="{{usertype}}/dashboard">Dashboard</a>#}
+{#        </li>#}
+{#        {%endif%}#}
+{#        {%if usertype != "not_logged_in"%}#}
+{#        <li class="nav-item">#}
+{#          <a class="nav-link" href="/logout">Logout</a>#}
+{#        </li>#}
+{#        {%endif%}#}
+{#      </ul>#}
+{#    </div>#}
+{#  </div>#}
+{#</nav>#}
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Maktab 89- Group 2 blog</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- theme meta -->
+	<meta name="theme-name" content="revolve" />
+
+	<!--Favicon-->
+	<link rel="shortcut icon" href="../../static/images/favicon.ico" type="image/x-icon">
+
+	<!-- THEME CSS
+	================================================== -->
+	<!-- Bootstrap -->
+{#	<link rel="stylesheet" href="../../static/plugins/bootstrap/css/bootstrap.min.css">#}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<!-- Themify -->
+	<link rel="stylesheet" href="../../static/plugins/themify/css/themify-icons.css">
+	<link rel="stylesheet" href="../../static/plugins/slick-carousel/slick-theme.css">
+	<link rel="stylesheet" href="../../static/plugins/slick-carousel/slick.css">
+	<!-- Slick Carousel -->
+	<link rel="stylesheet" href="../../static/plugins/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="../../static/plugins/owl-carousel/owl.theme.default.min.css">
+	<link rel="stylesheet" href="../../static/plugins/magnific-popup/magnific-popup.css">
+	<!-- manin stylesheet -->
+	<link rel="stylesheet" href="../../static/css/style.css">
+    <style>
+@media (min-width: 1025px) {
+.h-custom-2 {
+height: 100%;
+}
+
+form {
+    /* Added */
+        float: none; /* Added */
+    /* Added */
+    margin: 20px auto 10px;
+}
+.card {
+    /* Added */
+        float: none; /* Added */
+    /* Added */
+    margin: 0 auto 10px;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+	<header class="header-top bg-grey justify-content-center">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-2 col-md-4 text-center d-none d-lg-block">
+					<a class="navbar-brand " href="/">
+						Maktab89
+					</a>
+				</div>
+
+				<div class="col-lg-8 col-md-12">
+					<nav class="navbar navbar-expand-lg navigation-2 navigation">
+						<a class="navbar-brand text-uppercase d-lg-none" href="#">
+							<img src="../../static/images/logo.png" alt="" class="img-fluid">
+						</a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
+							aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="ti-menu"></span>
+						</button>
+
+						<div class="collapse navbar-collapse" id="navbar-collapse">
+							<ul id="menu" class="menu navbar-nav mx-auto">
+                                <li class="nav-item">
+									<a class="nav-link" href="/">Home</a>
+								  </li>
+								<li class="nav-item">
+									<a class="nav-link" href="/about-us">About</a>
+								  </li>
+								  <li class="nav-item">
+									<a class="nav-link" href="/contact-us">Contact</a>
+								  </li>
+								  <li class="nav-item">
+									<a class="nav-link" href="/allposts/">All posts</a>
+								  </li>
+								  {%if usertype == "not_logged_in"%}
+								  <li class="nav-item">
+									<a class="nav-link" href="/login">Register/Login</a>
+								  </li>
+								  {%endif%}
+								  {%if usertype == "admin" or usertype == "superuser"%}
+								  <li class="nav-item">
+									<a class="nav-link" href="{{usertype}}/dashboard">Dashboard</a>
+								  </li>
+								  {%endif%}
+								  {%if usertype != "not_logged_in"%}
+								  <li class="nav-item">
+									<a class="nav-link" href="/logout">Logout</a>
+								  </li>
+								  {%endif%}
+
+
+								</ul>
+						</div>
+					</nav>
+				</div>
+
+				<div class="col-lg-2 col-md-4 col-6">
+					<div class="header-socials-2 text-right d-none d-lg-block">
+						<ul class="list-inline mb-0">
+							<li class="list-inline-item"><a href="https://facebook.com"><i class="ti-facebook"></i></a></li>
+							<li class="list-inline-item"><a href="https://twitter.com"><i class="ti-twitter"></i></a></li>
+							<li class="list-inline-item"><a href="https://linkedin.com"><i class="ti-linkedin"></i></a></li>
+							<li class="list-inline-item"><a href="https://pinterest.com"><i class="ti-pinterest"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        ADD A NEW POST
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+<form id="addpost"  enctype="multipart/form-data" style="width: 700px;" action="/admin/dashboard" method="POST">
+  
+    <input placeholder="title" name="title"type="text" id="title" class="form-control form-control-lg" />
+    <br>
+    <textarea name="body" class="form-control"  id="editor" placeholder="body" rows="9"></textarea>
+    <br>
+    <input name="file"  type="file" id="formFile" >
+    <div class="pt-1 mb-4">
+      <button class="btn btn-info btn-lg btn-block" onclick="addpost(event, this)" type="submit" >Submit</button>
+    </div>
+</form>
+      </div>
+    </div>
+  </div>
+<!-- 
+  <div style="margin-top: 80px;" class="container-fluid">
+      <div class="text-black">
+
+
+        <div  class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+          <form id="addpost"  enctype="multipart/form-data" style="width: 700px;" action="/admin/dashboard" method="POST" >
+
+            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;margin-top: 30px;">Create a post</h3>
+
+
+            <div class="form-outline mb-4">
+              <input name="title"type="text" id="title" class="form-control form-control-lg" />
+              <label class="form-label" for="title">Title</label>
+            </div>
+
+
+            <div class="form-outline mb-4">
+             <textarea name="body" class="form-control" id="body" rows="9"></textarea>
+              <label class="form-label" for="body">Your post body</label>
+            </div>
+
+            <div class="mb-3">
+              <label >Choose a picture for your post</label>
+              <input name="file"  type="file" id="formFile">
+            </div>
+
+            <div class="pt-1 mb-4">
+              <button class="btn btn-info btn-lg btn-block" onclick="addpost(event, this)" type="submit">Submit</button>
+            </div>
+
+
+
+          </form>
+        </div>
+      </div>
+  </div> -->
+
+
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+          MANAGE YOUR POSTS
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+<div style="text-align: center;margin-top: 80px">
+  <h2>Your posts</h2>
+  <hr>
+<div class="container">
+  <div class="row">
+  {% for post in allposts %}
+  <div  class="card col-sm-3" style="width: 18rem;">
+      <img src="../{{post.image}}" class="card-img-top" alt="post image">
+      <div class="card-body text-body">
+        <h5 class="card-title"><a href="/post/{{post.id}}">{{post.title}}</a></h5>
+        <p class="card-text ">{{post.body[0:50]}}</p>
+        <button class="btn btn-danger" id="{{post.id}}" onclick="deletepost(event, this)">Delete</button>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<script>
+   async function addpost(event,el) {
+    event.preventDefault()
+    let myform = document.getElementById("addpost");
+    let fd = new FormData(myform);
+    console.log(fd);
+    $.ajax({
+  statusCode: {
+    200: function() {
+      alert( "success" );
+      window.location.replace("/admin/dashboard")
+    }
+  }
+});
+    $.ajax(
+      
+    {
+        
+        url: "/admin/dashboard",
+        data: fd,
+        cache: false,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+    });
+
+  
+  }
+
+      async function deletepost(event,el) {
+          event.preventDefault()
+
+          const response = await fetch("/admin/dashboard", {
+              method: "DELETE",
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  post_id: el.id
+              })
+        })
+
+        if (response.status === 200){
+          alert("Post deleted successfully!!!")
+            window.location.replace("/admin/dashboard")
+        } else {
+          alert(response.status)
+        }
+      }
+    </script>
+</body>
+
+
